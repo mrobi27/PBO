@@ -1,77 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.geometry.Insets?>
-
-<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.LoginController"
-            prefWidth="800" prefHeight="500">
+<?import javafx.scene.text.TextFlow?>
 
-    <StackPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
-               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="controller.LoginController"
+           prefWidth="900" prefHeight="600"
+           alignment="CENTER">
 
-        <!-- Bungkus dengan VBox agar konten tetap di tengah -->
-        <VBox alignment="CENTER">
-            <!-- Maksimal lebar konten -->
-            <HBox spacing="0" maxWidth="900" style="-fx-background-color: white;"
-                  alignment="CENTER" prefHeight="500">
+    <HBox spacing="60" alignment="CENTER">
+        <!-- Gambar di kiri -->
+        <ImageView fitHeight="500" preserveRatio="true">
+            <image>
+                <Image url="@../resources/images/login.png"/>
+            </image>
+        </ImageView>
 
-                <!-- Gambar kiri -->
-                <StackPane prefWidth="400">
-                    <ImageView fitWidth="400" preserveRatio="true" smooth="true">
-                        <image>
-                            <Image url="@../resources/images/login.png"/>
-                        </image>
-                    </ImageView>
-                </StackPane>
+        <!-- Form login di kanan -->
+        <VBox spacing="25" alignment="CENTER_LEFT" maxWidth="350">
+            <Label text="UMM Library Access"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label text="Welcome to the Universitas Muhammadiyah Malang Library"
+                   wrapText="true"/>
 
-                <!-- Form login -->
-                <VBox spacing="15" alignment="TOP_LEFT" prefWidth="400" maxWidth="450">
-                    <padding>
-                        <Insets top="40" left="30" right="30" bottom="30"/>
-                    </padding>
+            <VBox spacing="10" fillWidth="true">
+                <Label text="Username"/>
+                <TextField fx:id="usernameField" promptText="Enter your Username"
+                           style="-fx-border-color: #00c; -fx-border-radius: 20; -fx-background-radius: 20;"/>
+            </VBox>
 
-                    <Label text="UMM Library Access"
-                           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
-                    <Label text="Welcome to the Universitas Muhammadiyah Malang Library"
-                           wrapText="true"/>
+            <VBox spacing="10" fillWidth="true">
+                <Label text="Password"/>
+                <PasswordField fx:id="passwordField" promptText="Enter your Password"
+                               style="-fx-border-color: #00c; -fx-border-radius: 20; -fx-background-radius: 20;"/>
+            </VBox>
 
-                    <VBox spacing="5">
-                        <Label text="Username"/>
-                        <TextField fx:id="usernameField" promptText="Enter your Username"
-                                   style="-fx-border-color: #00c; -fx-border-radius: 20; -fx-background-radius: 20;"/>
-                    </VBox>
+            <HBox alignment="CENTER_LEFT" spacing="10" maxWidth="350">
+                <TextFlow>
+                    <Text text="Don't have an account? "/>
+                    <Hyperlink fx:id="singUpLink" text="Sign up here" onAction="#handleSingUpLink"/>
+                </TextFlow>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Hyperlink fx:id="adminLoginLink" text="Login as Admin"/>
+            </HBox>
 
-                    <VBox spacing="5">
-                        <Label text="Password"/>
-                        <PasswordField fx:id="passwordField" promptText="Enter your Password"
-                                       style="-fx-border-color: #00c; -fx-border-radius: 20; -fx-background-radius: 20;"/>
-                    </VBox>
-
-                    <CheckBox fx:id="rememberMeCheckBox" text="Remember Me"/>
-
-                    <HBox alignment="CENTER_LEFT" spacing="10">
-                        <TextFlow>
-                            <Text text="Don't have an account? " />
-                            <Hyperlink fx:id="signUpLink" text="Sign up here" />
-                        </TextFlow>
-
-                        <Region fx:id="spacer" HBox.hgrow="ALWAYS" />
-
-                        <Hyperlink fx:id="adminLoginLink" text="Login as Admin" />
-                    </HBox>
-
-                    <HBox alignment="CENTER_RIGHT">
-                        <Button text="Login" onAction="#handleLogin"
-                                style="-fx-background-color: maroon; -fx-text-fill: white; -fx-padding: 10 40; -fx-background-radius: 20;"/>
-                    </HBox>
-
-                </VBox>
+            <HBox alignment="CENTER_RIGHT">
+                <Button text="Login" onAction="#handleLogin"
+                        style="-fx-background-color: maroon; -fx-text-fill: white; -fx-padding: 10 40; -fx-background-radius: 20;"/>
             </HBox>
         </VBox>
-    </StackPane>
-</AnchorPane>
+    </HBox>
+</StackPane>
