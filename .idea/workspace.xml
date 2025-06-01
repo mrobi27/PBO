@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89627b76-f131-41c0-9a10-fc11bced4ef0" name="Changes" comment="" />
+    <list default="true" id="89627b76-f131-41c0-9a10-fc11bced4ef0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Main/src/controller/DashboardMemberControll.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/controller/LoginAdminControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/view/DashboardMember.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/view/LoginAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/view/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/view/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/view/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/view/Register.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +26,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -31,9 +43,11 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Library",
+    "last_opened_file_path": "D:/Library/Main",
     "onboarding.tips.debug.path": "D:/PBO Final/Library/src/Main.java",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",

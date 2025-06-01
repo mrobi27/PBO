@@ -4,7 +4,6 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.RegisterController"
@@ -15,7 +14,7 @@
     <top>
         <HBox spacing="10" alignment="CENTER_LEFT"
               style="-fx-background-color: #800000; -fx-padding: 10;">
-            <ImageView fitHeight="70" preserveRatio="true">
+            <ImageView fitHeight="50" preserveRatio="true">
                 <image>
                     <Image url="@../resources/images/logo.png"/>
                 </image>
