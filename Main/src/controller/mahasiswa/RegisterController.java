@@ -1,4 +1,4 @@
-package controller;
+package controller.mahasiswa;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,25 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import main.Main;
+import controller.UserDatabase;
 
 import java.io.IOException;
 
 public class RegisterController {
 
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private TextField nimField;
-
-    @FXML
-    private TextField majorField;
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private PasswordField passwordField;
+    @FXML private TextField usernameField;
+    @FXML private TextField nimField;
+    @FXML private TextField majorField;
+    @FXML private TextField emailField;
+    @FXML private PasswordField passwordField;
 
     @FXML
     private void handleRegister(ActionEvent event) {
@@ -43,13 +35,23 @@ public class RegisterController {
             return;
         }
 
+        if (UserDatabase.userExists(username)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registrasi Gagal");
+            alert.setHeaderText(null);
+            alert.setContentText("Username sudah digunakan, coba yang lain.");
+            alert.showAndWait();
+            return;
+        }
+
+        UserDatabase.addUser(username, password);
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Registrasi Berhasil");
         alert.setHeaderText(null);
         alert.setContentText("Akun berhasil dibuat! Silakan login.");
         alert.showAndWait();
 
-        // Pindah ke halaman login
         try {
             Parent loginPage = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
             Main.mainScene.setRoot(loginPage);
@@ -57,7 +59,6 @@ public class RegisterController {
             e.printStackTrace();
         }
     }
-
 
     @FXML
     private void handleCancel(ActionEvent event) {
