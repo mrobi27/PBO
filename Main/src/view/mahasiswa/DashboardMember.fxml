@@ -8,6 +8,7 @@
             prefWidth="1000" prefHeight="600"
             style="-fx-background-color: #f7f7f7;">
 
+
     <!-- Konten utama -->
     <center>
         <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 100 30 30 30;">

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import main.Main;
@@ -24,7 +25,7 @@ public class LoginAdminControl {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (username.equals("admin") && password.equals("admin123")) {
+        if ("admin".equals(username) && "admin123".equals(password)) {
             System.out.println("Admin login sukses!");
             try {
                 Parent adminDashboard = FXMLLoader.load(getClass().getResource("/view/AdminDashboard.fxml"));
@@ -34,10 +35,11 @@ public class LoginAdminControl {
                 Main.primaryStage.setMaximized(true);
             } catch (IOException e) {
                 e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Error", null, "Gagal memuat halaman Dashboard Admin.");
             }
         } else {
             System.out.println("Admin login gagal!");
-            // Kamu bisa tambahkan Alert untuk user friendly
+            showAlert(Alert.AlertType.ERROR, "Login Gagal", null, "Username atau password admin salah!");
         }
     }
 
@@ -51,6 +53,15 @@ public class LoginAdminControl {
             Main.primaryStage.setMaximized(true);
         } catch (IOException e) {
             e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", null, "Gagal memuat halaman Login User.");
         }
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String header, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

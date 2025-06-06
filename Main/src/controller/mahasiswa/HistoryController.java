@@ -96,7 +96,7 @@ public class HistoryController {
 
     private void openEditWindow(HistoryRecord data) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EditForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/mahasiswa/EditForm.fxml"));
             Parent root = loader.load();
 
             EditDataController controller = loader.getController();

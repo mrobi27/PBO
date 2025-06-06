@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.layout.Region;
 import javafx.event.ActionEvent;
 import main.Main;
 import controller.UserDatabase;
@@ -27,46 +28,62 @@ public class RegisterController {
         String password = passwordField.getText();
 
         if (username.isEmpty() || nim.isEmpty() || major.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Registrasi Gagal");
-            alert.setHeaderText(null);
-            alert.setContentText("Semua field harus diisi!");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.ERROR, "Registrasi Gagal", null, "Semua field harus diisi!");
             return;
         }
 
         if (UserDatabase.userExists(username)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Registrasi Gagal");
-            alert.setHeaderText(null);
-            alert.setContentText("Username sudah digunakan, coba yang lain.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.ERROR, "Registrasi Gagal", null, "Username sudah digunakan, coba yang lain.");
             return;
         }
 
         UserDatabase.addUser(username, password);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Registrasi Berhasil");
-        alert.setHeaderText(null);
-        alert.setContentText("Akun berhasil dibuat! Silakan login.");
-        alert.showAndWait();
+        showAlert(Alert.AlertType.INFORMATION, "Registrasi Berhasil", null, "Akun berhasil dibuat! Silakan login.");
 
-        try {
-            Parent loginPage = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
-            Main.mainScene.setRoot(loginPage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        goToLoginScene();
     }
 
     @FXML
     private void handleCancel(ActionEvent event) {
+        goToLoginScene();
+    }
+
+    private void goToLoginScene() {
         try {
+            System.out.println("Loading Login.fxml...");
             Parent loginPage = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+            System.out.println("Loaded Login.fxml");
+
+            // Ganti root scene
             Main.mainScene.setRoot(loginPage);
+            System.out.println("Set root");
+
+            // Bind ukuran supaya isi loginPage mengikuti ukuran scene
+            if (loginPage instanceof Region) {
+                Region rootRegion = (Region) loginPage;
+                rootRegion.prefWidthProperty().bind(Main.mainScene.widthProperty());
+                rootRegion.prefHeightProperty().bind(Main.mainScene.heightProperty());
+                System.out.println("Bind size");
+            }
+
+            // Optional: set maximize kalau memang ingin otomatis fullscreen
+            Main.primaryStage.setMaximized(true);
+
+            Main.primaryStage.setTitle("Login - UMM Library Access");
+            System.out.println("Switched to login scene.");
+
         } catch (IOException e) {
+            System.err.println("Error loading Login.fxml:");
             e.printStackTrace();
         }
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String header, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

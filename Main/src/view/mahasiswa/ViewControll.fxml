@@ -8,7 +8,7 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:id="rootPane"
             fx:controller="Util.ControllView"
-            prefWidth="1000" prefHeight="600"
+            prefWidth="1200" prefHeight="600"
             style="-fx-background-color: #f7f7f7;">
 
     <top>
